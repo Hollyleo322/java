@@ -1,0 +1,12 @@
+{
+  "name" : "rogue\n",
+  "lvl" : 1,
+  "countTreasures" : 9,
+  "destroyedEnemies" : 2,
+  "eatedFood" : 0,
+  "drinkedElixirs" : 0,
+  "readedScrolls" : 0,
+  "countHits" : 5,
+  "countMisses" : 4,
+  "countSteps" : 48
+}

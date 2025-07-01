@@ -1,0 +1,26 @@
+package web.model;
+
+public class JwtRequest {
+
+    private String login;
+
+    private String password;
+
+    public String getLogin() {
+        return login;
+    }
+
+    public JwtRequest setLogin(String login) {
+        this.login = login;
+        return this;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public JwtRequest setPassword(String password) {
+        this.password = password;
+        return this;
+    }
+}
