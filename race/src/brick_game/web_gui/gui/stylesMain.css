@@ -1,0 +1,45 @@
+html {
+    min-height: 100vh;
+    height: 100%;
+}
+
+body {
+    background-color: rgba(255, 255, 255, 0.947);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    margin-bottom: 20rem;
+}
+
+button {
+    width: 700px;
+    height: 100px;
+    background-color: black;
+    font-size: large;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 30px;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    background-color: #00000055;
+}
+
+.header img {
+    position: absolute;
+    left: 10px;
+    width: 100px;
+    height: 100px;
+    background: #555;
+}
+
+.header h1 {
+    position: sticky;
+    top: 18px;
+    left: 10px;
+}

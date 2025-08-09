@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  <script src="game.js" type="module" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tetris</title>
+</head>
+
+<body>
+  <h1>Brick game</h1>
+  <div id="tetris">
+    <div id="settings">
+      <label name="move">Move:</label>
+      <label for="move" id="valueMove"> Arrow keys or WSAD</label><br>
+      <label name="pause">Pause:</label>
+      <label for="pause" id="valuePause">Enter</label><br>
+      <label name="restart">Restart:</label>
+      <label for="restart" id="valueRestart">S</label><br>
+      <label name="Quit">Quit:</label>
+      <label for="Quit" id="valueQuit">Q</label><br>
+      <label name="Actions">Action:</label>
+      <label for="Actions" id="valueActions">Space</label>
+    </div>
+    <div id="game-board"></div>
+    <div id="side-panel">
+      <div id="next" hidden="true"></div>
+      <label name="score">score</label>
+      <label for="score" id="valueScore">0</label><br>
+      <label name="high score">high score</label>
+      <label for="high score" id="valueHighScore">0</label><br>
+      <label name="level">level</label>
+      <label for="level" id="valueLevel">0</label><br>
+      <label name="speed">speed</label>
+      <label for="speed" id="valueSpeed">0</label>
+    </div>
+  </div>
+</body>
+
+</html>
