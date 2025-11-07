@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
+      routes:
+        - id: client
+          uri: http://localhost:8081
+          predicates:
+            - Path=/ec/**
+server:
+  port: 8082
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.cloud.netflix.eureka: TRACE
