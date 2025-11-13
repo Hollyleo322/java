@@ -1,0 +1,3 @@
+databaseChangelog:
+  - include:
+      file: db/migration/changeset/create-user-table.yml
