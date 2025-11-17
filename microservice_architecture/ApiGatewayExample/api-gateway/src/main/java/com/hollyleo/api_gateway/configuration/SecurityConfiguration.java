@@ -1,5 +1,9 @@
 package com.hollyleo.api_gateway.configuration;
 
+import static org.springframework.cloud.gateway.server.mvc.filter.BeforeFilterFunctions.uri;
+import static org.springframework.cloud.gateway.server.mvc.handler.GatewayRouterFunctions.route;
+import static org.springframework.cloud.gateway.server.mvc.handler.HandlerFunctions.http;
+
 import com.hollyleo.api_gateway.security.details.service.MyUserDetailsService;
 import com.hollyleo.api_gateway.security.jwt.JwtProvider;
 import com.hollyleo.api_gateway.security.jwt.filter.JwtFilter;
@@ -15,6 +19,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.intercept.AuthorizationFilter;
+import org.springframework.web.servlet.function.RouterFunction;
+import org.springframework.web.servlet.function.ServerResponse;
 
 @Configuration
 @RequiredArgsConstructor
@@ -38,7 +44,7 @@ public class SecurityConfiguration {
   public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, JwtProvider jwtProvider) throws Exception {
     httpSecurity.csrf(AbstractHttpConfigurer::disable);
     httpSecurity.authorizeHttpRequests((requestRegistry) -> requestRegistry
-        .requestMatchers("/api/bank_rest/user/registration", "/api/bank_rest/user/auth", "/api/bank_rest/user/updateAccess").permitAll()
+        .requestMatchers("/registration", "/auth").permitAll()
         .anyRequest().authenticated());
     httpSecurity.addFilterBefore(new JwtFilter(jwtProvider), AuthorizationFilter.class);
     return httpSecurity.build();

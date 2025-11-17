@@ -1,11 +1,11 @@
 package com.hollyleo.api_gateway.security.jwt;
 
 import com.hollyleo.api_gateway.dto.JwtUser;
-import com.hollyleo.api_gateway.entity.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
 import java.util.Date;
 import java.util.List;
 import javax.crypto.SecretKey;
@@ -20,7 +20,12 @@ public class JwtProvider {
   @Value("${app.security.key}")
   private String secretString;
 
-  private final SecretKey secretKey = Keys.hmacShaKeyFor(secretString.getBytes());
+  private  SecretKey secretKey;
+
+  @PostConstruct
+  public void init() {
+    secretKey = Keys.hmacShaKeyFor(secretString.getBytes());
+  }
 
   public String generateAccessToken(JwtUser user) {
     return jwtBuilder.claim("type", "access").claim("username", user.getUsername()).claim("roles", user.getRoles()).issuer("api-gateway-hollyleo").issuedAt(new Date()).expiration(new Date(System.currentTimeMillis() + 15 * 60 * 1000)).signWith(secretKey).compact();

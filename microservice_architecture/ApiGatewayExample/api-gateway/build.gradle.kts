@@ -23,7 +23,7 @@ extra["springCloudVersion"] = "2025.0.0"
 
 dependencies {
 	// cloud
-	implementation("org.springframework.cloud:spring-cloud-starter-gateway-server-webflux")
+	implementation("org.springframework.cloud:spring-cloud-starter-gateway-server-webmvc")
 	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 	// security
 	implementation("io.jsonwebtoken:jjwt-api:0.12.6")

@@ -1,0 +1,42 @@
+networks:
+  mynetwork:
+services:
+  postgres-db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=api_gateway_db
+      - POSTGRES_USER=holly
+      - POSTGRES_PASSWORD=admin322
+    ports:
+      - 5432:5432
+    networks:
+      - mynetwork
+  eureka-server:
+    image: eureka-server:322
+    ports:
+      - 8761:8761
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8761/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - mynetwork
+  eureka-client:
+    image: eureka-client:322
+    ports:
+      - 8081:8081
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - mynetwork
+  api-gateway:
+    image: api-gateway:322
+    ports:
+      - 8082:8082
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - mynetwork

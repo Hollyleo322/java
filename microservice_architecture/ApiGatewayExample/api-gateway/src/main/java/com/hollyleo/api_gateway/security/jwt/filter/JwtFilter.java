@@ -27,8 +27,8 @@ public class JwtFilter extends OncePerRequestFilter {
       jakarta.servlet.http.HttpServletResponse response, jakarta.servlet.FilterChain filterChain)
       throws ServletException, IOException {
     String endpoint = request.getRequestURI();
-    if (endpoint.equals("/api/bank_rest/user/registration") || endpoint.equals(
-        "/api/bank_rest/user/auth") || endpoint.equals("/api/bank_rest/user/updateAccess")) {
+    if (endpoint.equals("/registration") || endpoint.equals(
+        "/auth")) {
       filterChain.doFilter(request, response);
     } else {
       String token = request.getHeader("Authorization");
