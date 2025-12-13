@@ -9,5 +9,5 @@
 - плагин shadow для работы jar с установленными зависимостями
 ### Запуск программы
 - Билдим jar командой gradle shadowJar или gradlew shadowJar
-- Запускаем jar примером с тз `java -jar uXl.jar -s -a -p sample- test/in1.txt test/in2.txt`
+- Запускаем jar примером с тз `java -jar build/libs/filterFiles-1.0-SNAPSHOT-all.jar -s -a -p sample- test/in1.txt test/in2.txt`
 - В папке test примеры с тз и пустой файл
