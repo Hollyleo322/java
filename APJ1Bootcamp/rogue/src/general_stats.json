@@ -1,0 +1,111 @@
+[ {
+  "name" : "ads\n",
+  "lvl" : 1,
+  "countTreasures" : 90,
+  "destroyedEnemies" : 10,
+  "eatedFood" : 1,
+  "drinkedElixirs" : 0,
+  "readedScrolls" : 3,
+  "countHits" : 27,
+  "countMisses" : 18,
+  "countSteps" : 548
+}, {
+  "name" : "dia\n",
+  "lvl" : 2,
+  "countTreasures" : 88,
+  "destroyedEnemies" : 7,
+  "eatedFood" : 0,
+  "drinkedElixirs" : 0,
+  "readedScrolls" : 1,
+  "countHits" : 22,
+  "countMisses" : 8,
+  "countSteps" : 637
+}, {
+  "name" : "ads\n",
+  "lvl" : 1,
+  "countTreasures" : 84,
+  "destroyedEnemies" : 13,
+  "eatedFood" : 0,
+  "drinkedElixirs" : 0,
+  "readedScrolls" : 0,
+  "countHits" : 43,
+  "countMisses" : 37,
+  "countSteps" : 1196
+}, {
+  "name" : "dsa\n",
+  "lvl" : 1,
+  "countTreasures" : 65,
+  "destroyedEnemies" : 9,
+  "eatedFood" : 0,
+  "drinkedElixirs" : 0,
+  "readedScrolls" : 0,
+  "countHits" : 27,
+  "countMisses" : 14,
+  "countSteps" : 894
+}, {
+  "name" : "dsa\n",
+  "lvl" : 1,
+  "countTreasures" : 65,
+  "destroyedEnemies" : 9,
+  "eatedFood" : 0,
+  "drinkedElixirs" : 0,
+  "readedScrolls" : 0,
+  "countHits" : 27,
+  "countMisses" : 14,
+  "countSteps" : 895
+}, {
+  "name" : "dsa\n",
+  "lvl" : 2,
+  "countTreasures" : 59,
+  "destroyedEnemies" : 10,
+  "eatedFood" : 0,
+  "drinkedElixirs" : 0,
+  "readedScrolls" : 0,
+  "countHits" : 36,
+  "countMisses" : 30,
+  "countSteps" : 600
+}, {
+  "name" : "das\n",
+  "lvl" : 2,
+  "countTreasures" : 59,
+  "destroyedEnemies" : 10,
+  "eatedFood" : 0,
+  "drinkedElixirs" : 0,
+  "readedScrolls" : 0,
+  "countHits" : 36,
+  "countMisses" : 30,
+  "countSteps" : 633
+}, {
+  "name" : "sss\n",
+  "lvl" : 1,
+  "countTreasures" : 59,
+  "destroyedEnemies" : 9,
+  "eatedFood" : 0,
+  "drinkedElixirs" : 0,
+  "readedScrolls" : 0,
+  "countHits" : 31,
+  "countMisses" : 20,
+  "countSteps" : 678
+}, {
+  "name" : "\n",
+  "lvl" : 2,
+  "countTreasures" : 58,
+  "destroyedEnemies" : 5,
+  "eatedFood" : 0,
+  "drinkedElixirs" : 0,
+  "readedScrolls" : 1,
+  "countHits" : 17,
+  "countMisses" : 25,
+  "countSteps" : 520
+}, {
+  "name" : "dia\n",
+  "lvl" : 2,
+  "countTreasures" : 55,
+  "destroyedEnemies" : 5,
+  "eatedFood" : 0,
+  "drinkedElixirs" : 0,
+  "readedScrolls" : 1,
+  "countHits" : 11,
+  "countMisses" : 15,
+  "countSteps" : 501
+} ]

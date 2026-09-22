@@ -1,0 +1,44 @@
+package domain;
+
+public class Constants {
+    public static final int ROOMS_IN_WIDTH = 3;
+    public static final int ROOMS_IN_HEIGHT = 3;
+    public static final int ROOMS_NUM = 9;
+    public static final int REGION_WIDTH = 40;
+    public static final int REGION_HEIGHT = 10;
+    public static final int MIN_ROOM_WIDTH = 6;
+    public static final int MAX_ROOM_WIDTH = 25;
+    public static final int MIN_ROOM_HEIGHT = 5;
+    public static final int MAX_ROOM_HEIGHT = 8;
+    public static final int MAX_PERCENT_FOOD_REGEN_FROM_HEALTH = 20;
+    public static final int MAX_PERCENT_AGILITY_INCREASE = 10;
+    public static final int MAX_PERCENT_STRENGTH_INCREASE = 10;
+    public static final int MAX_PERCENT_MAXHP_INCREASE = 10;
+    public static final int MIN_ELIXIR_DURATION_STEPS = 30;
+    public static final int MAX_ELIXIR_DURATION_STEPS = 60;
+    public static final int MIN_WEAPON_STRENGTH = 30;
+    public static final int MAX_WEAPON_STRENGTH = 50;
+    public static final int LOW_HOSTILITY_RADIUS = 2;
+    public static final int AVERAGE_HOSTILITY_RADIUS = 4;
+    public static final int HIGH_HOSTILITY_RADIUS = 6;
+    public static final int MAX_CONSUMABLES_PER_ROOM = 3;
+    public static final int MAX_MONSTERS_PER_ROOM = 2;
+    public static final int LEVEL_UPDATE_DIFFICULTY = 10;
+    public static final int PERCENTS_UPDATE_DIFFICULTY_MONSTERS = 2;
+    public static final int LEVEL_NUM = 21;
+    public static final int MAX_TRIES_TO_MOVE = 16;
+    public static final int MAX_ITEMS_IN_BACKPACK = 9;
+    public static final int INITIAL_HIT_CHANCE = 70;
+    public static final int STANDART_AGILITY = 50;
+    public static final double AGILITY_FACTOR = 0.3;
+    public static final int STANDART_STRENGTH = 50;
+    public static final double STRENGTH_FACTOR = 0.3;
+    public static final int STRENGTH_ADDITION = 65;
+    public static final int INITIAL_DAMAGE = 30;
+    public static final int MAX_HP_PART = 10;
+    public static final int SLEEP_CHANCE = 15;
+    public static final String[] TYPE_ITEMS = { "Treasure", "Food", "Elixir", "Scroll", "Weapon" };
+    public static final String[] SUBTYPE_ITEMS = { "Dexterity", "Strength", "Maximum HP" };
+    public static final String[] WEAPONS = { "Sword", "Axe", "Mace", "Staff" };
+    public static final String[] FOODS = { "Apple", "Banana", "Cake", "Pizza", "Chicken" };
+}

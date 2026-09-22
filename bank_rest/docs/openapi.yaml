@@ -1,0 +1,587 @@
+openapi: 3.0.3
+info:
+  version: "1"
+  title: Bank REST app
+  description: Tested task
+servers:
+  - url: http://localhost:8080/api/bank_rest
+tags:
+  - name: user
+    description: Authentication and authorization
+  - name: card
+    description: Operations with cards for admin
+  - name: card/user
+    description: Operations with cards for user
+paths:
+  /user/registration:
+    post:
+      summary: Registration of user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      tags:
+        - user
+      responses:
+        '200':
+          description: Success of registration
+          content:
+            application/json:
+              schema:
+                type: string
+                example: User with name piba was registered
+        '401':
+          description: Error of registration, username is being used
+          content:
+            application/json:
+              schema:
+                type: string
+                example: Username is already being used, please choose another username
+        '403':
+          description: Not valid parameters in the request body
+  /user/auth:
+    post:
+      summary: Authentication of user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      tags:
+        - user
+      responses:
+        '200':
+          description: Success of authentication
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accessToken:
+                    type: string
+                  refreshToken:
+                    type: string
+        '401':
+          description: Error of authentication, incorrect username or password
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "Incorrect username or password"
+        '403':
+          description: Not valid parameters in the request body
+  /user/updateAccess:
+    post:
+      summary: Update of access token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refreshToken:
+                  type: string
+      tags:
+        - user
+      responses:
+        '200':
+          description: Success of authentication
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accessToken:
+                    type: string
+                  refreshToken:
+                    type: string
+        '400':
+          description: Invalid token
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "Token is invalid"
+        '403':
+          description: Not valid parameters in the request body
+  /card/create:
+    post:
+      summary: Creating card for user
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ownerId:
+                  type: integer
+      tags:
+        - card
+      responses:
+        '201':
+          description: Card is created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CardDto"
+        '400':
+          description: User not found or user doesn't have card with specified number
+          content:
+            application/json:
+              schema:
+                type: string
+                example: User not found
+        '500':
+          description: Error of encryption (Inner server error)
+          content:
+            application/json:
+              schema:
+                type: string
+  /card/block:
+    post:
+      summary: Block card for user
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CardRequest"
+      tags:
+        - card
+      responses:
+        '200':
+          description: Card is blocked
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CardDto"
+        '400':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userNotFound:
+                    type: string
+                    example: User not found
+                  userDoesntHaveCard:
+                    type: string
+                    example: User doesn't have card with number ended by 4322
+        '500':
+          description: Error of encryption (Inner server error)
+          content:
+            application/json:
+              schema:
+                type: string
+  /card/active:
+    post:
+      summary: Activate card for user
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CardRequest"
+      tags:
+        - card
+      responses:
+        '200':
+          description: Card is activated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CardDto"
+        '400':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userNotFound:
+                    type: string
+                    example: User not found
+                  userDoesntHaveCard:
+                    type: string
+                    example: User doesn't have card with number ended by 4322
+        '500':
+          description: Error of encryption (Inner server error)
+          content:
+            application/json:
+              schema:
+                type: string
+  /card/delete:
+    post:
+      summary: Delete card
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CardRequest"
+      tags:
+        - card
+      responses:
+        '200':
+          description: Card is deleted
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userNotFound:
+                    type: string
+                    example: User not found
+                  userDoesntHaveCard:
+                    type: string
+                    example: User doesn't have card with number ended by 4322
+        '500':
+          description: Error of encryption (Inner server error)
+          content:
+            application/json:
+              schema:
+                type: string
+  /card/all:
+    get:
+      summary: Getting all created cards
+      security:
+        - BearerAuth: []
+      tags:
+        - card
+      responses:
+        '200':
+          description: Success of getting all cards
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CardDto"
+  /card/user/all:
+    get:
+      summary: Getting all user's cards
+      security:
+        - BearerAuth: []
+      tags:
+        - card/user
+      responses:
+        '200':
+          description: Success of getting all user's cards
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CardDto"
+        '400':
+          description: Invalid token or empty Authorization header
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: Token is expired
+          content:
+            application/json:
+              schema:
+                type: string
+        '500':
+          description: Error of encryption (Inner server error)
+          content:
+            application/json:
+              schema:
+                type: string
+  /card/user/number/{cardNumber}:
+    get:
+      summary: Getting card by last 4 digits of card
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: cardNumber
+          in: path
+          required: true
+          schema:
+            type: integer
+      tags:
+        - card/user
+        - name: cardNumber
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success of getting card by number
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CardDto"
+        '400':
+          description: Invalid token or empty Authorization header or user doesn't have card with specified
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: Token is expired
+          content:
+            application/json:
+              schema:
+                type: string
+        '500':
+          description: Error of encryption (Inner server error)
+          content:
+            application/json:
+              schema:
+                type: string
+  /card/user/pageable:
+    get:
+      summary: Getting pageable card list
+      security:
+        - BearerAuth: []
+      tags:
+        - card/user
+      parameters:
+        - name: page
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: size
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success of getting pageable card list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CardDto"
+        '400':
+          description: Invalid token or empty Authorization header
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: Token is expired
+          content:
+            application/json:
+              schema:
+                type: string
+        '500':
+          description: Error of encryption (Inner server error)
+          content:
+            application/json:
+              schema:
+                type: string
+  /card/user/block/{cardNumber}:
+    post:
+      summary: Query for block card with specified number
+      security:
+        - BearerAuth: []
+      tags:
+        - card/user
+      parameters:
+        - name: cardNumber
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success of sending query
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "Query is sent"
+        '400':
+          description: Invalid token or empty Authorization header or user doesn't have card with specified number
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: Token is expired
+          content:
+            application/json:
+              schema:
+                type: string
+        '500':
+          description: Error of encryption (Inner server error)
+          content:
+            application/json:
+              schema:
+                type: string
+  /card/user/transfer:
+    post:
+      summary: Transfer money between self cards
+      security:
+        - BearerAuth: []
+      tags:
+        - card/user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fromNumber:
+                  type: string
+                  description: number of card from transfer
+                toNumber:
+                  type: string
+                  description: number of card to transfer
+                sum:
+                  type: integer
+                  description: sum of transaction
+      responses:
+        '200':
+          description: Success of transaction
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CardDto"
+        '400':
+          description: Invalid token or empty Authorization header or user doesn't have card with specified number
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: Token is expired
+          content:
+            application/json:
+              schema:
+                type: string
+        '500':
+          description: Error of encryption (Inner server error)
+          content:
+            application/json:
+              schema:
+                type: string
+  /card/user/balance/{cardNumber}:
+    get:
+      summary: Check balance of specified card
+      security:
+        - BearerAuth: []
+      tags:
+        - card/user
+      parameters:
+        - name: cardNumber
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: integer
+        '400':
+          description: Invalid token or empty Authorization header or user doesn't have card with specified number
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: Token is expired
+          content:
+            application/json:
+              schema:
+                type: string
+        '500':
+          description: Error of encryption (Inner server error)
+          content:
+            application/json:
+              schema:
+                type: string
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    CardDto:
+      type: object
+      required:
+        - number
+        - user
+        - cardStatus
+        - expiryMonth
+        - expiryYear
+        - balance
+      properties:
+        number:
+          type: string
+        user:
+          type: string
+        cardStatus:
+          type: string
+          enum:
+            - ACTIVE
+            - BLOCKED
+            - EXPIRED
+        expiryMonth:
+          type: integer
+        expiryYear:
+          type: integer
+        balance:
+          type: integer
+    CardRequest:
+      type: object
+      required:
+        - ownerId
+        - number
+      properties:
+        ownerId:
+          type: integer
+        number:
+          type: string
+
+
+
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <script src="src/main.js" type="module" defer></script>
+  <title>Maze by gwynesst</title>
+</head>
+
+<body>
+  <div id="drawField">
+    <canvas id="canvas" width="500" height="500"></canvas>
+  </div>
+  <div id="control">
+    <div id="fileLoad">
+      <input type="file" id="fileInput" accept=".txt">
+    </div>
+    <button id="loadMaze">Load Maze</button>
+    <div id="row">
+      <label id="rows">rows</label>
+      <input id="inputRows" type="number" min="2" max="50">
+    </div>
+    <div id="col">
+      <label id cols>cols</label>
+      <input id="inputCols" type="number" min="2" max="50">
+    </div>
+    <button id="generateMaze">Generate Maze</button>
+    <div id="startedCoords">
+      <label id="started">started </label>
+      <label id="startedX">x:</label>
+      <input id="inputstartedX" type="number" min="0" max="49">
+      <label id="startedY">y:</label>
+      <input id="inputstartedY" type="number" min="0" max="49">
+    </div>
+    <div id="finishedCoords">
+      <label id="finished">finished </label>
+      <label id="finishedX">x:</label>
+      <input id="inputfinishedX" type="number" min="0" max="49">
+      <label id="finishedY">y:</label>
+      <input id="inputfinishedY" type="number" min="0" max="49">
+    </div>
+    <button id="showDecision">Show decision</button>
+  </div>
+</body>
+
+</html>

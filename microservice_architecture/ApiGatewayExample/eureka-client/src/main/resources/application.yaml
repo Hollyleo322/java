@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: client
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka
+server:
+  port: 8081
+

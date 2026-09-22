@@ -1,0 +1,9 @@
+services:
+  swagger-ui:
+    image: alingse/swagger-yaml-ui:latest
+    volumes:
+      - ./openapi.yaml:/app/swagger.yaml:ro
+    environment:
+      BASE_URL: "/swagger"
+    ports:
+      - "80:8080"

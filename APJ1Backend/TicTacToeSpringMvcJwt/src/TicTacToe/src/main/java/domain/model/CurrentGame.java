@@ -1,0 +1,56 @@
+package domain.model;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class CurrentGame {
+    private int uuid;
+    private GameField gameField;
+    private String condition;
+    private boolean withAI = true;
+    private List<Integer> userId = new ArrayList<>();
+    private Date dateOfCreating;
+
+    public CurrentGame(int id, GameField field, String condition, boolean withAI, List<Integer> users, Date dateOfCreating)
+    {
+        this.uuid = id;
+        this.gameField = field;
+        this.condition = condition;
+        this.withAI = withAI;
+        this.userId = users;
+        this.dateOfCreating = dateOfCreating;
+    }
+    public int getUuid()
+    {
+        return uuid;
+    }
+    public GameField getGameField()
+    {
+        return gameField;
+    }
+    public String getCondition() { return condition;}
+    public List<Integer> getUserId() {
+        return userId;
+    }
+    public boolean isWithAI() {return  withAI;}
+    public Date getDateOfCreating() {return dateOfCreating;}
+    public void setUuid(int id)
+    {
+        uuid = id;
+    }
+    public void setGameField(GameField field)
+    {
+        gameField = field;
+    }
+    public void setCondition(String condition) {
+        condition = condition;
+    }
+    public void setWithHuman(){
+        withAI = false;
+    }
+    public void setUserId(List<Integer> users) {
+        userId = users;
+    }
+    public void setDateOfCreating(Date dateOfCreating) { this.dateOfCreating = dateOfCreating;}
+}

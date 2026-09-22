@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#control {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#fileLoad {
+    padding-left: 100px;
+}
+
+
+button {
+    margin-bottom: 30px;
+    background-color: black;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    width: 100px;
+    border-radius: 30px;
+}
+
+input {
+    margin-bottom: 30px;
+}

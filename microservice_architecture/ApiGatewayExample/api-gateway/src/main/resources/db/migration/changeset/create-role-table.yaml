@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-role
+      author: holly
+      preConditions:
+        onFail: HALT
+        onError: HALT
+        not:
+          - tableExists:
+              tableName: user_roles
+      changes:
+        - createTable:
+            tableName: user_roles
+            columns:
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_user_roles_user
+                    references: usr(id)
+              - column:
+                  name: role
+                  type: varchar(15)
+                  constraints:
+                    nullable: false

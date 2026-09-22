@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: db/migration/changeset/create-user-table.yaml
+  - include:
+      file: db/migration/changeset/create-card-table.yaml
+  - include:
+      file: db/migration/changeset/create-role-table.yaml

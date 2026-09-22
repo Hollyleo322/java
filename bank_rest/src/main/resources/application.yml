@@ -1,0 +1,9 @@
+spring:
+  liquibase:
+    change-log: classpath:db/migration/mainChangelog.yaml
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bank_rest_example_db
+    username: holly
+    password: admin322
+  jpa:
+    generate-ddl: false

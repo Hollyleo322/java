@@ -1,0 +1,51 @@
+databaseChangeLog:
+ - changeSet:
+     id: create-card
+     author: holly
+     changes:
+       - createTable:
+           tableName: card
+           columns:
+             - column:
+                 name: id
+                 type: bigint
+                 autoIncrement: true
+                 constraints:
+                   primaryKey: true
+             - column:
+                 name: number
+                 type: varchar(255)
+                 constraints:
+                   unique: true
+                   nullable: false
+             - column:
+                 name: owner_id
+                 type: bigint
+                 constraints:
+                   foreignKeyName: fk_card_user
+                   references: usr(id)
+             - column:
+                 name: expiry_month
+                 type: integer
+                 constraints:
+                   nullable: false
+                   check: "expiry_month >= 1 AND expiry_month <= 12"
+             - column:
+                 name: expiry_year
+                 type: integer
+                 constraints:
+                   nullable: false
+                   check : "expiry_year >= 2025 AND expiry_year <= 2030"
+             - column:
+                 name: card_status
+                 type: varchar(10)
+                 constraints:
+                   nullable: false
+             - column:
+                 name: balance
+                 type: decimal
+                 constraints:
+                   nullable: false
+
+
+

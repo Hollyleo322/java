@@ -1,0 +1,102 @@
+\input texinfo
+@setfilename maze.info
+@documentencoding UTF-8
+
+@settitle s21_maze
+
+@titlepage
+@title s21_maze
+@subtitle Java variant of maze
+@author gwynesst, esylva
+
+@vskip 0pt plus 1filll
+@end titlepage
+
+@headings off
+
+@contents
+
+@ifnottex
+@node Top
+@top s21_maze
+@end ifnottex
+
+@menu
+* FxPainter class::           
+* Controller class::
+* EllerAlgorithm class::
+* Decision class::     
+@end menu
+
+@node FxPainter page
+@chapter FxPainter class
+
+@code{class FxPainter} - Class of drawing field by data
+
+@code{drawField} - method of drawing field (sets color, lineWidth, borders)
+
+@code{drawDecision} - method of drawing decision (sets red color, going thrue middle of cells)
+
+@code{drawCave} - method of drawing cave (fill rect of black color "alive" cells)
+
+@node Controller page
+@chapter Controller class
+
+@code{class Controller} - class of processing user's input
+
+@code{onClickedLoad} - method of pressing load button (parse file and call FxPainter to draw maze)
+
+@code{getFile} - method of getting file from ui interface (creates open file dialog)
+
+@code{showMessageError} - showing errors in ui
+
+@code{scanMazeFile} - parsing data from the file, init fields for processing
+
+@code{onClickedDecision} - parse data from input field and calls FxPainter for drawning decision
+
+@node EllerAlgorithm page
+@chapter EllerAlgorithm class
+
+@code{class EllerAlgorithm} - class of using Eller's algorithm for creating perfect mazes
+
+@code{getField} - creates field from rows and calls which gets in parametres and returns field
+
+@code{initLastLine} - inits last line, leads cells in the same sets and broke walls if they different
+
+@code{fill right} - fill right column, for correct parse field
+
+@code{fill bottom} - fill bottom row, for correct parse field
+
+@code{initLine} - inits line(if first line it will be sequential set, in other case in cells where is bottom line, it will be init unique values)
+
+@code{initBottomLine} - part of method init line, which response for init unique values if there is bottom walls
+
+@code{getIndexes} - gets indexes which must not have bottom walls 
+
+@code{incrementNumber}
+
+@code{initFirstLine} - part of method initLine (response for first line)
+
+@code{addRightBorder} - adds right border if there is the same set (randomly decide add border, or connect in the one set)
+
+@code{addBottomBorder} - randomly adds bottom border if the cell not in List of index, which must not have bottom wall
+
+@node Decision page
+@chapter Decision class
+
+@code{class Decision} - class which finds decision
+
+@code{findDecision} - finds decision
+
+@code{addNeighbours} - adds neighbours if it possible (if not beyond, or wall between cells)
+
+@code{addLeftPoint} - part of addNeighbours
+
+@code{addRightPoint} - part of addNeighbours
+
+@code{addUpperPoint} - part of addNeighbours
+
+@code{addLowerPoint} - part of addNeighbours
+
+@code{contains} - check contains list of visited points current point
+@bye
